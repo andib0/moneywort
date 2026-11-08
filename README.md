@@ -3,6 +3,16 @@
 A local-first personal finance app for Android, built with Rust and Tauri 2.
 Everything is stored in SQLite on the phone. There are no accounts, no cloud and no tracking.
 
+<p>
+  <img src="docs/home.png" width="260" alt="Home screen showing this month's spending, accounts and latest entries">
+  <img src="docs/add.png" width="260" alt="Add entry sheet with category grid and number keypad">
+</p>
+
+## Install
+
+Download `penny.apk` from the [latest release](https://github.com/andib0/penny/releases/latest) and open it on your phone (Android 8.0 or newer).
+You may need to allow your browser to install unknown apps. On Samsung phones, turn off Auto Blocker first (Settings → Security and privacy).
+
 ## Features
 
 - **Fast entry**: a keypad sheet for logging expenses, income and transfers, with a category grid, account, date and note
@@ -47,3 +57,7 @@ npx tauri android build --apk --target aarch64
 The signed APK is written to `src-tauri/gen/android/app/build/outputs/apk/universal/release/`.
 
 Signing uses `src-tauri/gen/android/keystore.properties`, which points at `android-signing/penny-release.jks`. Both are gitignored. **Back up the keystore.** Android only installs updates that are signed with the same key.
+
+## License
+
+[MIT](LICENSE)

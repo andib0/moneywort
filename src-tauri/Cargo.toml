@@ -2,6 +2,7 @@
 name = "penny"
 version = "0.1.0"
 description = "Local-first personal finance tracker"
+license = "MIT"
 authors = ["andi"]
 edition = "2024"
 

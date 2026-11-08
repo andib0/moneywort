@@ -56,6 +56,12 @@ npx tauri android build --apk --target aarch64
 
 The signed APK is written to `src-tauri/gen/android/app/build/outputs/apk/universal/release/`.
 
+On Windows without Developer Mode, Tauri can't create the symlink it needs. Use the script instead, which copies the libraries and writes `dist/penny.apk`:
+
+```bash
+bash scripts/build-apk.sh
+```
+
 Signing uses `src-tauri/gen/android/keystore.properties`, which points at `android-signing/penny-release.jks`. Both are gitignored. **Back up the keystore.** Android only installs updates that are signed with the same key.
 
 ## License

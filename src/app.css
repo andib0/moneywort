@@ -1,0 +1,359 @@
+@import '@fontsource-variable/bricolage-grotesque/opsz.css';
+
+:root {
+  --paper: #f2f4ef;
+  --surface: #fbfcf9;
+  --sunk: #e7ebe4;
+  --ink: #18211c;
+  --muted: #69736c;
+  --faint: #9aa39c;
+  --line: #dce1da;
+  --mint: #1e6b50;
+  --mint-soft: #d6e8de;
+  --rust: #b24a31;
+  --rust-soft: #f3ddd6;
+  --on-mint: #f4faf6;
+  --scrim: rgba(18, 26, 21, 0.38);
+
+  --display: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', system-ui, sans-serif;
+  --body: system-ui, -apple-system, 'Roboto', 'Segoe UI', sans-serif;
+
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 26px;
+  --pad: 20px;
+  --nav-h: 68px;
+  /* Android WebView often reports 0 here even with a gesture bar. */
+  --safe-b: max(env(safe-area-inset-bottom, 0px), 16px);
+  --safe-t: env(safe-area-inset-top, 0px);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --paper: #121814;
+    --surface: #19211c;
+    --sunk: #0d120f;
+    --ink: #e6ece7;
+    --muted: #93a097;
+    --faint: #5e6a62;
+    --line: #26302a;
+    --mint: #5cc497;
+    --mint-soft: #1d3a2d;
+    --rust: #e98468;
+    --rust-soft: #3c2420;
+    --on-mint: #0c1a13;
+    --scrim: rgba(0, 0, 0, 0.55);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --paper: #121814;
+  --surface: #19211c;
+  --sunk: #0d120f;
+  --ink: #e6ece7;
+  --muted: #93a097;
+  --faint: #5e6a62;
+  --line: #26302a;
+  --mint: #5cc497;
+  --mint-soft: #1d3a2d;
+  --rust: #e98468;
+  --rust-soft: #3c2420;
+  --on-mint: #0c1a13;
+  --scrim: rgba(0, 0, 0, 0.55);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+  user-select: none;
+}
+
+input,
+textarea {
+  user-select: text;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+:focus-visible {
+  outline: 2px solid var(--mint);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* Section headings within screens */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 28px var(--pad) 10px;
+}
+.section-head h2 {
+  font-size: 1.12rem;
+}
+.link {
+  color: var(--mint);
+  font-weight: 600;
+  font-size: 0.92rem;
+  padding: 6px 0;
+}
+
+/* Hairline list */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 60px;
+  padding: 10px var(--pad);
+  text-align: left;
+}
+.row + .row {
+  border-top: 1px solid var(--line);
+}
+.row:active {
+  background: var(--sunk);
+}
+.row .grow {
+  flex: 1;
+  min-width: 0;
+}
+.row .title {
+  font-weight: 550;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.row .sub {
+  font-size: 0.84rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Category glyph */
+.glyph {
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  font-size: 1.15rem;
+  flex: none;
+  background: color-mix(in srgb, var(--c, var(--muted)) 16%, transparent);
+  color: var(--c, var(--muted));
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 0 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  background: var(--sunk);
+  transition: transform 0.08s;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn.primary {
+  background: var(--mint);
+  color: var(--on-mint);
+}
+.btn.danger {
+  background: var(--rust-soft);
+  color: var(--rust);
+}
+.btn.block {
+  width: 100%;
+}
+.btn:disabled {
+  opacity: 0.45;
+}
+
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  color: var(--ink);
+}
+.icon-btn:active {
+  background: var(--sunk);
+}
+
+/* Segmented control */
+.seg {
+  display: flex;
+  background: var(--sunk);
+  border-radius: 999px;
+  padding: 4px;
+  gap: 2px;
+}
+.seg button {
+  flex: 1;
+  min-height: 38px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--muted);
+  transition: background 0.15s, color 0.15s;
+}
+.seg button[aria-pressed='true'] {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+/* Chips */
+.chips {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 var(--pad);
+}
+.chips::-webkit-scrollbar {
+  display: none;
+}
+.chip {
+  flex: none;
+  min-height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 0.9rem;
+  font-weight: 550;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.chip[aria-pressed='true'],
+.chip[aria-checked='true'] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+/* Inputs */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field label,
+.field .label {
+  font-size: 0.84rem;
+  color: var(--muted);
+  font-weight: 550;
+}
+.input {
+  min-height: 50px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 0 14px;
+  width: 100%;
+}
+.input:focus {
+  outline: none;
+  border-color: var(--mint);
+}
+
+/* Progress bar */
+.bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--sunk);
+  overflow: hidden;
+}
+.bar > i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--c, var(--mint));
+  transition: width 0.4s ease;
+}
+
+.empty {
+  padding: 40px var(--pad);
+  text-align: center;
+  color: var(--muted);
+}
+.empty strong {
+  display: block;
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

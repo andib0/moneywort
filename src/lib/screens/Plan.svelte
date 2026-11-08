@@ -78,7 +78,7 @@
 {:else}
   <div class="empty">
     <strong>Set a monthly limit</strong>
-    Pick a category like groceries and Penny tracks how much is left as you spend.
+    Pick a category like groceries and Moneywort tracks how much is left as you spend.
     <div class="cta"><button class="btn primary" onclick={() => openSheet({ type: 'budget' })}>Add budget</button></div>
   </div>
 {/if}
@@ -113,7 +113,7 @@
 {:else}
   <div class="empty">
     <strong>Rent, salary, subscriptions</strong>
-    Add anything that repeats and Penny logs it on the right day automatically.
+    Add anything that repeats and Moneywort logs it on the right day automatically.
   </div>
 {/if}
 

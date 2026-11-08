@@ -1,8 +1,8 @@
 [package]
-name = "penny-core"
-version = "0.1.0"
+name = "moneywort-core"
+version = "0.1.1"
 edition = "2024"
-description = "Storage and finance logic for Penny"
+description = "Storage and finance logic for Moneywort"
 license = "MIT"
 
 [dependencies]

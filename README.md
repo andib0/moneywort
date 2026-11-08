@@ -1,4 +1,4 @@
-# Penny
+# Moneywort
 
 A local-first personal finance app for Android, built with Rust and Tauri 2.
 Everything is stored in SQLite on the phone. There are no accounts, no cloud and no tracking.
@@ -10,7 +10,7 @@ Everything is stored in SQLite on the phone. There are no accounts, no cloud and
 
 ## Install
 
-Download `penny.apk` from the [latest release](https://github.com/andib0/penny/releases/latest) and open it on your phone (Android 8.0 or newer).
+Download `moneywort.apk` from the [latest release](https://github.com/andib0/moneywort/releases/latest) and open it on your phone (Android 8.0 or newer).
 You may need to allow your browser to install unknown apps. On Samsung phones, turn off Auto Blocker first (Settings → Security and privacy).
 
 ## Features
@@ -27,8 +27,8 @@ You may need to allow your browser to install unknown apps. On Samsung phones, t
 ## Layout
 
 ```
-core/         penny-core: pure Rust storage and finance logic (SQLite, rusqlite) plus unit tests
-src-tauri/    Tauri shell that exposes penny-core as commands
+core/         moneywort-core: pure Rust storage and finance logic (SQLite, rusqlite) plus unit tests
+src-tauri/    Tauri shell that exposes moneywort-core as commands
 src/          Svelte 5 UI
   lib/api.ts    typed command wrappers (falls back to lib/mock.ts in a plain browser)
   lib/screens/  Home, Activity, Insights, Plan
@@ -56,13 +56,13 @@ npx tauri android build --apk --target aarch64
 
 The signed APK is written to `src-tauri/gen/android/app/build/outputs/apk/universal/release/`.
 
-On Windows without Developer Mode, Tauri can't create the symlink it needs. Use the script instead, which copies the libraries and writes `dist/penny.apk`:
+On Windows without Developer Mode, Tauri can't create the symlink it needs. Use the script instead, which copies the libraries and writes `dist/moneywort.apk`:
 
 ```bash
 bash scripts/build-apk.sh
 ```
 
-Signing uses `src-tauri/gen/android/keystore.properties`, which points at `android-signing/penny-release.jks`. Both are gitignored. **Back up the keystore.** Android only installs updates that are signed with the same key.
+Signing uses `src-tauri/gen/android/keystore.properties`, which points at `android-signing/moneywort-release.jks`. Both are gitignored. **Back up the keystore.** Android only installs updates that are signed with the same key.
 
 ## License
 

@@ -14,7 +14,7 @@
 
   function lastAccount(): number {
     try {
-      const id = Number(localStorage.getItem('penny-last-account'));
+      const id = Number(localStorage.getItem('moneywort-last-account'));
       if (app.accounts.some((a) => a.id === id && !a.archived)) return id;
     } catch {
       /* ignore */
@@ -78,7 +78,7 @@
     saving = false;
     if (ok) {
       try {
-        localStorage.setItem('penny-last-account', String(accountId));
+        localStorage.setItem('moneywort-last-account', String(accountId));
       } catch {
         /* ignore */
       }

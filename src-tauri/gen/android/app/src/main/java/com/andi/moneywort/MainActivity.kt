@@ -1,4 +1,4 @@
-package com.andi.penny
+package com.andi.moneywort
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

@@ -44,7 +44,7 @@
 
 {#if app.error}
   <div class="fatal">
-    <h1>Penny couldn't open its data</h1>
+    <h1>Moneywort couldn't open its data</h1>
     <p>{app.error}</p>
     <button class="btn primary" onclick={() => location.reload()}>Try again</button>
   </div>

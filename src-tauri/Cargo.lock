@@ -1797,6 +1797,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "moneywort"
+version = "0.1.1"
+dependencies = [
+ "moneywort-core",
+ "serde_json",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin-dialog",
+ "tauri-plugin-fs",
+]
+
+[[package]]
+name = "moneywort-core"
+version = "0.1.1"
+dependencies = [
+ "chrono",
+ "rusqlite",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "muda"
 version = "0.20.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2145,28 +2167,6 @@ dependencies = [
  "redox_syscall",
  "smallvec",
  "windows-link",
-]
-
-[[package]]
-name = "penny"
-version = "0.1.0"
-dependencies = [
- "penny-core",
- "serde_json",
- "tauri",
- "tauri-build",
- "tauri-plugin-dialog",
- "tauri-plugin-fs",
-]
-
-[[package]]
-name = "penny-core"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "rusqlite",
- "serde",
- "serde_json",
 ]
 
 [[package]]

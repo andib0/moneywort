@@ -1,4 +1,4 @@
-use penny_core::{Account, Backup, Bootstrap, Category, Db, Recurring, Res, Summary, Transaction, TxFilter};
+use moneywort_core::{Account, Backup, Bootstrap, Category, Db, Recurring, Res, Summary, Transaction, TxFilter};
 use std::sync::Mutex;
 use tauri::{Manager, State};
 
@@ -82,7 +82,7 @@ fn export_json(s: State<AppState>) -> Res<String> {
 #[tauri::command]
 fn import_json(s: State<AppState>, data: String) -> Res<()> {
     let backup: Backup =
-        serde_json::from_str(&data).map_err(|e| format!("Not a valid Penny backup: {e}"))?;
+        serde_json::from_str(&data).map_err(|e| format!("Not a valid Moneywort backup: {e}"))?;
     with(&s, |d| d.import(&backup))
 }
 
@@ -104,7 +104,7 @@ pub fn run() {
         .setup(|app| {
             let dir = app.path().app_data_dir()?;
             std::fs::create_dir_all(&dir)?;
-            let db = Db::open(&dir.join("penny.db")).map_err(std::io::Error::other)?;
+            let db = Db::open(&dir.join("moneywort.db")).map_err(std::io::Error::other)?;
             app.manage(AppState(Mutex::new(db)));
             Ok(())
         })
@@ -128,5 +128,5 @@ pub fn run() {
             wipe_data
         ])
         .run(tauri::generate_context!())
-        .expect("error while running Penny");
+        .expect("error while running Moneywort");
 }

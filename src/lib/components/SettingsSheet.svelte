@@ -25,7 +25,7 @@
 
   async function exportBackup() {
     try {
-      const ok = await saveTextFile(`penny-backup-${todayISO()}.json`, await api.exportJson(), 'json');
+      const ok = await saveTextFile(`moneywort-backup-${todayISO()}.json`, await api.exportJson(), 'json');
       if (ok) toast('Backup saved');
     } catch (e) {
       toast(String(e));
@@ -34,7 +34,7 @@
 
   async function exportCsv() {
     try {
-      const ok = await saveTextFile(`penny-${todayISO()}.csv`, await api.exportCsv(), 'csv');
+      const ok = await saveTextFile(`moneywort-${todayISO()}.csv`, await api.exportCsv(), 'csv');
       if (ok) toast('Spreadsheet saved');
     } catch (e) {
       toast(String(e));
@@ -52,7 +52,7 @@
     if (!text) return;
     confirmAction(
       'Restore this backup?',
-      'Everything currently in Penny will be replaced by the backup. Save a backup first if you want to keep it.',
+      'Everything currently in Moneywort will be replaced by the backup. Save a backup first if you want to keep it.',
       'Restore',
       async () => {
         await mutate(() => api.importJson(text!), 'Backup restored');
@@ -140,7 +140,7 @@
 
   <p class="about">
     <Icon name="shield" size={18} />
-    <span>Penny keeps everything on this phone. No account, no cloud, no tracking. Save a backup now and then so you never lose your history.</span>
+    <span>Moneywort keeps everything on this phone. No account, no cloud, no tracking. Save a backup now and then so you never lose your history.</span>
   </p>
 </Sheet>
 

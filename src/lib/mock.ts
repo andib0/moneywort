@@ -1,5 +1,5 @@
 // In-browser stand-in for the Rust backend so the UI can be previewed without a device.
-// Mirrors penny-core's behaviour closely enough for design work; the APK never loads this.
+// Mirrors moneywort-core's behaviour closely enough for design work; the APK never loads this.
 import type { Account, Budget, Category, Recurring, Summary, Tx, TxFilter } from './types';
 import { addMonths, iso, parseISO, todayISO } from './fmt';
 
@@ -13,7 +13,7 @@ interface Store {
   seq: number;
 }
 
-const KEY = 'penny-preview';
+const KEY = 'moneywort-preview';
 
 function seed(): Store {
   const cats: [string, string, string, 'expense' | 'income'][] = [
@@ -326,9 +326,9 @@ export function handle(cmd: string, a: Record<string, any>): unknown {
       try {
         b = JSON.parse(a.data);
       } catch (e) {
-        fail('Not a valid Penny backup: ' + e);
+        fail('Not a valid Moneywort backup: ' + e);
       }
-      if (!Array.isArray(b.accounts) || !Array.isArray(b.transactions)) fail('Not a valid Penny backup');
+      if (!Array.isArray(b.accounts) || !Array.isArray(b.transactions)) fail('Not a valid Moneywort backup');
       const ids = [...b.accounts, ...b.categories, ...b.transactions, ...b.recurring].map((x: any) => x.id);
       db = { ...b, seq: Math.max(100, ...ids) + 1 };
       break;

@@ -20,8 +20,8 @@ jni=src-tauri/gen/android/app/src/main/jniLibs
 for t in "${targets[@]}"; do
   echo "==> Rust ($t)"
   # Expected to fail at the symlink step; the library is already built by then.
-  npx tauri android build --apk --target "$t" >/dev/null 2>&1 || true
-  lib="src-tauri/target/${triple[$t]}/release/libpenny_lib.so"
+  npx tauri android build --apk --target "$t" </dev/null >/dev/null 2>&1 || true
+  lib="src-tauri/target/${triple[$t]}/release/libmoneywort_lib.so"
   [ -f "$lib" ] || { echo "Rust build for $t failed. Run: npx tauri android build --apk --target $t"; exit 1; }
   mkdir -p "$jni/${abi[$t]}"
   cp -f "$lib" "$jni/${abi[$t]}/"
@@ -36,5 +36,5 @@ cd src-tauri/gen/android
 
 apk=app/build/outputs/apk/universal/release/app-universal-release.apk
 mkdir -p ../../../dist
-cp -f "$apk" ../../../dist/penny.apk
-echo "==> dist/penny.apk ($(du -h ../../../dist/penny.apk | cut -f1))"
+cp -f "$apk" ../../../dist/moneywort.apk
+echo "==> dist/moneywort.apk ($(du -h ../../../dist/moneywort.apk | cut -f1))"
